@@ -12,27 +12,27 @@ Une application météo élégante inspirée des célèbres glaces en forme de r
 - 📱 **Installable** - Sur votre écran d'accueil iPhone
 - 🎨 **Design Amorino** - Couleurs authentiques de la marque
 
-## 🌹 Système de Glaces Roses
+## 🍦 Système de Glaces Roses
 
-L'application affiche différentes roses de glace selon la température, inspirées des célèbres créations Amorino :
+L'application affiche une glace en spirale (🍦) qui change d'animation selon la température, inspirée des célèbres roses Amorino :
 
-### 🌺 Rose Hibiscus (> 20°C)
+### 🍦 Rose qui Fond (> 20°C)
 - Température chaude
-- Animation de fonte douce
-- Message : "Ta glace fond avec la chaleur"
-- Couleurs vives et tropicales
+- Animation : penche et fond doucement
+- Message : "Attention, ta rose fond !"
+- Effet lumineux (plus clair)
 
-### 🌹 Rose Parfaite (10-20°C)
-- Température idéale
-- Animation de flottement élégant
-- Message : "Parfait pour déguster"
+### 🍦 Rose Parfaite (10-20°C)
+- Température idéale (10-20°C)
+- Animation : flottement élégant et doux
+- Message : "Parfait pour déguster ta rose"
 - La signature Amorino
 
-### 🥀 Rose Gelée (< 10°C)
+### 🍦 Rose Gelée (< 10°C)
 - Température froide
-- Animation de grelottement
-- Message : "Ta glace est toute gelée"
-- Effet givré subtil
+- Animation : tremble et grelotte
+- Message : "Ta rose est toute gelée"
+- Effet givré (plus brillant)
 
 ## 🚀 Installation
 
