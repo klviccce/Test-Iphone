@@ -175,7 +175,6 @@ function displayWeather(current, forecast) {
 
     // Update ice cream icon with animation class
     const weatherIconEl = document.getElementById('weatherIcon');
-    weatherIconEl.textContent = iceCreamState.icon;
     // Remove old classes
     weatherIconEl.classList.remove('melting', 'normal', 'frozen');
     // Add new class
@@ -217,7 +216,17 @@ function displayForecast(forecast) {
                 <div class="forecast-date">${dayName}</div>
                 <div class="forecast-desc">${day.weather[0].description}</div>
             </div>
-            <div class="forecast-icon">${iceCreamState.icon}</div>
+            <div class="forecast-icon">
+                <svg viewBox="0 0 200 300" class="ice-cream-svg-small">
+                    <path d="M 70 180 L 100 280 L 130 180 Z" fill="#D2691E" stroke="#8B4513" stroke-width="2"/>
+                    <ellipse cx="85" cy="140" rx="25" ry="35" fill="#FF69B4" opacity="0.9" transform="rotate(-30 85 140)"/>
+                    <ellipse cx="115" cy="140" rx="25" ry="35" fill="#FF1493" opacity="0.9" transform="rotate(30 115 140)"/>
+                    <ellipse cx="90" cy="125" rx="20" ry="30" fill="#FF1493" opacity="0.95" transform="rotate(-15 90 125)"/>
+                    <ellipse cx="110" cy="125" rx="20" ry="30" fill="#FF69B4" opacity="0.95" transform="rotate(15 110 125)"/>
+                    <ellipse cx="100" cy="115" rx="15" ry="25" fill="#D4567F" opacity="1"/>
+                    <circle cx="100" cy="110" r="10" fill="#C71585"/>
+                </svg>
+            </div>
             <div class="forecast-temp">${temp}°C</div>
         `;
 

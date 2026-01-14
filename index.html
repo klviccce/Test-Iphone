@@ -39,7 +39,37 @@
         <!-- Current Weather -->
         <div class="current-weather" id="currentWeather">
             <div class="city-name" id="cityName">--</div>
-            <div class="weather-icon" id="weatherIcon">🍦</div>
+            <div class="weather-icon" id="weatherIcon">
+                <svg viewBox="0 0 200 300" class="ice-cream-svg">
+                    <!-- Cone -->
+                    <path d="M 70 180 L 100 280 L 130 180 Z" fill="#D2691E" stroke="#8B4513" stroke-width="2"/>
+                    <pattern id="waffle" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                        <line x1="0" y1="0" x2="20" y2="20" stroke="#8B4513" stroke-width="1"/>
+                        <line x1="20" y1="0" x2="0" y2="20" stroke="#8B4513" stroke-width="1"/>
+                    </pattern>
+                    <path d="M 70 180 L 100 280 L 130 180 Z" fill="url(#waffle)" opacity="0.3"/>
+
+                    <!-- Rose petals - outer layer -->
+                    <ellipse cx="85" cy="140" rx="25" ry="35" fill="#FF69B4" opacity="0.9" transform="rotate(-30 85 140)"/>
+                    <ellipse cx="115" cy="140" rx="25" ry="35" fill="#FF1493" opacity="0.9" transform="rotate(30 115 140)"/>
+                    <ellipse cx="70" cy="160" rx="25" ry="35" fill="#FF69B4" opacity="0.9" transform="rotate(-60 70 160)"/>
+                    <ellipse cx="130" cy="160" rx="25" ry="35" fill="#FF1493" opacity="0.9" transform="rotate(60 130 160)"/>
+
+                    <!-- Rose petals - middle layer -->
+                    <ellipse cx="90" cy="125" rx="20" ry="30" fill="#FF1493" opacity="0.95" transform="rotate(-15 90 125)"/>
+                    <ellipse cx="110" cy="125" rx="20" ry="30" fill="#FF69B4" opacity="0.95" transform="rotate(15 110 125)"/>
+                    <ellipse cx="80" cy="145" rx="20" ry="30" fill="#FF1493" opacity="0.95" transform="rotate(-45 80 145)"/>
+                    <ellipse cx="120" cy="145" rx="20" ry="30" fill="#FF69B4" opacity="0.95" transform="rotate(45 120 145)"/>
+
+                    <!-- Rose petals - inner layer -->
+                    <ellipse cx="95" cy="115" rx="15" ry="25" fill="#FF1493" opacity="1" transform="rotate(-10 95 115)"/>
+                    <ellipse cx="105" cy="115" rx="15" ry="25" fill="#D4567F" opacity="1" transform="rotate(10 105 115)"/>
+                    <ellipse cx="100" cy="130" rx="18" ry="28" fill="#FF69B4" opacity="1"/>
+
+                    <!-- Center -->
+                    <circle cx="100" cy="110" r="12" fill="#C71585"/>
+                </svg>
+            </div>
             <div class="temperature" id="temperature">--°</div>
             <div class="ice-cream-status" id="iceCreamStatus">--</div>
             <div class="weather-description" id="weatherDescription">--</div>
