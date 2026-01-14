@@ -1,35 +1,38 @@
-# 🍦 Météo Gelato - Application Météo Amorino pour iPhone
+# 🌹 Météo Amorino - Application iPhone
 
-Une application météo gourmande avec un thème inspiré des glaces en fleurs d'Amorino ! Regardez votre glace fondre quand il fait chaud ou geler quand il fait froid. Progressive Web App (PWA) installable sur votre écran d'accueil.
+Une application météo élégante inspirée des célèbres glaces en forme de rose d'Amorino ! Design épuré avec les vraies couleurs de la marque. Progressive Web App (PWA) installable sur votre écran d'accueil.
 
 ## ✨ Fonctionnalités
 
 - 📍 **Géolocalisation automatique** - Détecte votre position actuelle
 - 🔍 **Recherche de ville** - Trouvez la météo n'importe où dans le monde
 - 🌡️ **Météo actuelle** - Température, ressenti, vent, humidité
-- 📅 **Prévisions 5 jours** - Anticipez la météo à venir avec icônes de glace
-- 💾 **Mémorisation** - Se souvient de votre dernière ville recherchée
-- 📱 **Installable** - Ajoutez l'app à votre écran d'accueil iPhone
-- 🎨 **Design Amorino** - Dégradés pastel style gelato italien
+- 📅 **Prévisions 5 jours** - Avec icônes de glaces roses
+- 💾 **Mémorisation** - Se souvient de votre dernière ville
+- 📱 **Installable** - Sur votre écran d'accueil iPhone
+- 🎨 **Design Amorino** - Couleurs authentiques de la marque
 
-### 🍨 Système de Glace Animée
+## 🌹 Système de Glaces Roses
 
-L'application affiche différentes glaces selon la température :
+L'application affiche différentes roses de glace selon la température, inspirées des célèbres créations Amorino :
 
-- **🍦 Glace qui fond** (> 20°C)
-  - Animation de fonte réaliste
-  - Message : "🫠 Attention, ta glace fond !"
-  - Parfait pour l'été !
+### 🌺 Rose Hibiscus (> 20°C)
+- Température chaude
+- Animation de fonte douce
+- Message : "Ta glace fond avec la chaleur"
+- Couleurs vives et tropicales
 
-- **🍨 Glace parfaite** (10-20°C)
-  - Rebond doux et élégant
-  - Message : "✨ Parfait pour déguster une glace !"
-  - Température idéale pour un gelato
+### 🌹 Rose Parfaite (10-20°C)
+- Température idéale
+- Animation de flottement élégant
+- Message : "Parfait pour déguster"
+- La signature Amorino
 
-- **🧊 Glace gelée** (< 10°C)
-  - Animation de tremblement glacé
-  - Message : "❄️ Brr, ta glace est toute gelée !"
-  - Effet glaçons en hiver
+### 🥀 Rose Gelée (< 10°C)
+- Température froide
+- Animation de grelottement
+- Message : "Ta glace est toute gelée"
+- Effet givré subtil
 
 ## 🚀 Installation
 
@@ -128,23 +131,27 @@ Test-Iphone/
 - **PWA** - Progressive Web App
 - **Service Worker** - Cache et mode offline
 
-## 🎨 Thème Amorino
+## 🎨 Palette de Couleurs Amorino
 
-L'application utilise une palette de couleurs pastel inspirée des glaces italiennes :
+L'application utilise les couleurs authentiques de la marque Amorino :
 
-- **Rose bonbon** (#FFB5E8) - Douceur et gourmandise
-- **Rose pâle** (#FFC9DE, #FFB6C1) - Élégance et délicatesse
-- **Crème vanille** (#FFE5B4) - Chaleur et réconfort
-- **Menthe glacée** (#DFFFFD) - Fraîcheur
-- **Lavande** (#E0BBE4, #DDA0DD) - Raffinement
+- **Fond crème** (#FFF8F0) - Naturel et chaleureux
+- **Rose framboise** (#D4567F) - Signature Amorino
+- **Beige doux** (#F5E6D3, #E8D5C4) - Élégance italienne
+- **Marron cornet** (#8B6F47) - Gourmandise
+- **Gris ardoise** (#4A4A4A) - Lisibilité optimale
 
-Les cartes météo utilisent des effets de verre (backdrop-filter) pour un effet gelato translucide !
+Design épuré :
+- Fond uni crème (pas de dégradé)
+- Cartes blanches avec bordures beiges
+- Ombres douces et subtiles
+- Typographie claire et aérée
 
 ### Personnalisation
 
-Pour modifier les couleurs du dégradé dans `style.css` :
+Pour modifier la couleur principale dans `style.css` :
 ```css
-background: linear-gradient(135deg, #FFB5E8 0%, #FFC9DE 25%, #FFE5B4 50%, #DFFFFD 75%, #E0BBE4 100%);
+color: #D4567F; /* Rose Amorino */
 ```
 
 ### Changer la ville par défaut
