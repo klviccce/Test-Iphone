@@ -12,18 +12,35 @@ const error = document.getElementById('error');
 const currentWeather = document.getElementById('currentWeather');
 const forecastContainer = document.getElementById('forecastContainer');
 
-// Weather icons mapping
-const weatherIcons = {
-    '01d': '☀️', '01n': '🌙',
-    '02d': '⛅', '02n': '☁️',
-    '03d': '☁️', '03n': '☁️',
-    '04d': '☁️', '04n': '☁️',
-    '09d': '🌧️', '09n': '🌧️',
-    '10d': '🌦️', '10n': '🌧️',
-    '11d': '⛈️', '11n': '⛈️',
-    '13d': '❄️', '13n': '❄️',
-    '50d': '🌫️', '50n': '🌫️'
+// Ice cream icons based on temperature
+const iceCreamIcons = {
+    melting: '🍦',  // > 20°C - Ice cream is melting
+    normal: '🍨',   // 10-20°C - Perfect ice cream
+    frozen: '🧊'    // < 10°C - Frozen solid
 };
+
+// Helper function to get ice cream state based on temperature
+function getIceCreamState(temp) {
+    if (temp > 20) {
+        return {
+            icon: iceCreamIcons.melting,
+            status: '🫠 Attention, ta glace fond !',
+            cssClass: 'melting'
+        };
+    } else if (temp < 10) {
+        return {
+            icon: iceCreamIcons.frozen,
+            status: '❄️ Brr, ta glace est toute gelée !',
+            cssClass: 'frozen'
+        };
+    } else {
+        return {
+            icon: iceCreamIcons.normal,
+            status: '✨ Parfait pour déguster une glace !',
+            cssClass: 'normal'
+        };
+    }
+}
 
 // Event Listeners
 searchBtn.addEventListener('click', handleSearch);
@@ -150,10 +167,22 @@ async function getWeatherByCoords(lat, lon) {
 }
 
 function displayWeather(current, forecast) {
+    const temp = Math.round(current.main.temp);
+    const iceCreamState = getIceCreamState(temp);
+
     // Update current weather
     document.getElementById('cityName').textContent = current.name;
-    document.getElementById('weatherIcon').textContent = weatherIcons[current.weather[0].icon] || '🌤️';
-    document.getElementById('temperature').textContent = `${Math.round(current.main.temp)}°`;
+
+    // Update ice cream icon with animation class
+    const weatherIconEl = document.getElementById('weatherIcon');
+    weatherIconEl.textContent = iceCreamState.icon;
+    // Remove old classes
+    weatherIconEl.classList.remove('melting', 'normal', 'frozen');
+    // Add new class
+    weatherIconEl.classList.add(iceCreamState.cssClass);
+
+    document.getElementById('temperature').textContent = `${temp}°`;
+    document.getElementById('iceCreamStatus').textContent = iceCreamState.status;
     document.getElementById('weatherDescription').textContent = current.weather[0].description;
     document.getElementById('wind').textContent = `${Math.round(current.wind.speed * 3.6)} km/h`;
     document.getElementById('humidity').textContent = `${current.main.humidity}%`;
@@ -178,6 +207,8 @@ function displayForecast(forecast) {
     dailyForecasts.forEach(day => {
         const date = new Date(day.dt * 1000);
         const dayName = date.toLocaleDateString('fr-FR', { weekday: 'long' });
+        const temp = Math.round(day.main.temp);
+        const iceCreamState = getIceCreamState(temp);
 
         const forecastItem = document.createElement('div');
         forecastItem.className = 'forecast-item';
@@ -186,8 +217,8 @@ function displayForecast(forecast) {
                 <div class="forecast-date">${dayName}</div>
                 <div class="forecast-desc">${day.weather[0].description}</div>
             </div>
-            <div class="forecast-icon">${weatherIcons[day.weather[0].icon] || '🌤️'}</div>
-            <div class="forecast-temp">${Math.round(day.main.temp)}°C</div>
+            <div class="forecast-icon">${iceCreamState.icon}</div>
+            <div class="forecast-temp">${temp}°C</div>
         `;
 
         forecastList.appendChild(forecastItem);

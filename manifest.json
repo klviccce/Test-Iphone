@@ -1,11 +1,11 @@
 {
-  "name": "Météo iPhone",
-  "short_name": "Météo",
-  "description": "Application météo pour iPhone",
+  "name": "🍦 Météo Gelato",
+  "short_name": "Gelato",
+  "description": "Application météo avec des glaces Amorino pour iPhone",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#667eea",
-  "theme_color": "#667eea",
+  "background_color": "#FFB5E8",
+  "theme_color": "#FFB6C1",
   "orientation": "portrait",
   "icons": [
     {
