@@ -1,6 +1,6 @@
 // API Configuration - OpenWeatherMap (gratuit)
 // Vous devrez obtenir votre propre clé API sur https://openweathermap.org/api
-const API_KEY = 'VOTRE_CLE_API_ICI'; // Remplacez par votre clé API
+const API_KEY = '3afb1809129c93adce086382142359c5'; // Remplacez par votre clé API
 const API_URL = 'https://api.openweathermap.org/data/2.5';
 
 // Elements DOM
