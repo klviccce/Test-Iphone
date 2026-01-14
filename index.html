@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#4A90E2">
+    <title>Météo iPhone</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icon.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="app-title">☀️ Météo</h1>
+            <button class="location-btn" id="locationBtn">📍 Ma position</button>
+        </header>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+            <input type="text" id="cityInput" class="search-input" placeholder="Rechercher une ville...">
+            <button class="search-btn" id="searchBtn">🔍</button>
+        </div>
+
+        <!-- Loading Indicator -->
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Chargement...</p>
+        </div>
+
+        <!-- Error Message -->
+        <div class="error" id="error">
+            <p class="error-message"></p>
+        </div>
+
+        <!-- Current Weather -->
+        <div class="current-weather" id="currentWeather">
+            <div class="city-name" id="cityName">--</div>
+            <div class="weather-icon" id="weatherIcon">🌤️</div>
+            <div class="temperature" id="temperature">--°</div>
+            <div class="weather-description" id="weatherDescription">--</div>
+
+            <div class="weather-details">
+                <div class="detail-item">
+                    <span class="detail-icon">💨</span>
+                    <span class="detail-label">Vent</span>
+                    <span class="detail-value" id="wind">-- km/h</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-icon">💧</span>
+                    <span class="detail-label">Humidité</span>
+                    <span class="detail-value" id="humidity">--%</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-icon">🌡️</span>
+                    <span class="detail-label">Ressenti</span>
+                    <span class="detail-value" id="feelsLike">--°</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Forecast -->
+        <div class="forecast-container" id="forecastContainer">
+            <h2 class="forecast-title">Prévisions</h2>
+            <div class="forecast-list" id="forecastList">
+                <!-- Forecast items will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
