@@ -173,11 +173,22 @@ function displayWeather(current, forecast) {
     // Update current weather
     document.getElementById('cityName').textContent = current.name;
 
-    // Update ice cream icon with animation class
+    // Update ice cream icon - show the right SVG
     const weatherIconEl = document.getElementById('weatherIcon');
-    // Remove old classes
+    // Hide all SVGs first
+    weatherIconEl.querySelectorAll('.ice-cream-svg').forEach(svg => svg.style.display = 'none');
+
+    // Show the appropriate SVG
+    if (iceCreamState.cssClass === 'melting') {
+        weatherIconEl.querySelector('.melting-ice').style.display = 'block';
+    } else if (iceCreamState.cssClass === 'frozen') {
+        weatherIconEl.querySelector('.frozen-ice').style.display = 'block';
+    } else {
+        weatherIconEl.querySelector('.normal-ice').style.display = 'block';
+    }
+
+    // Remove old classes and add new class for animations
     weatherIconEl.classList.remove('melting', 'normal', 'frozen');
-    // Add new class
     weatherIconEl.classList.add(iceCreamState.cssClass);
 
     document.getElementById('temperature').textContent = `${temp}°`;
@@ -209,6 +220,41 @@ function displayForecast(forecast) {
         const temp = Math.round(day.main.temp);
         const iceCreamState = getIceCreamState(temp);
 
+        let svgContent = '';
+        if (temp > 20) {
+            // Melting ball
+            svgContent = `
+                <svg viewBox="0 0 200 300" class="ice-cream-svg-small">
+                    <path d="M 70 180 L 100 280 L 130 180 Z" fill="#D2691E" stroke="#8B4513" stroke-width="2"/>
+                    <ellipse cx="100" cy="140" rx="35" ry="40" fill="#FF69B4" opacity="0.95"/>
+                    <ellipse cx="100" cy="135" rx="28" ry="33" fill="#FF1493" opacity="0.9"/>
+                </svg>`;
+        } else if (temp < 10) {
+            // Frozen with crystals
+            svgContent = `
+                <svg viewBox="0 0 200 300" class="ice-cream-svg-small">
+                    <path d="M 70 180 L 100 280 L 130 180 Z" fill="#D2691E" stroke="#8B4513" stroke-width="2"/>
+                    <ellipse cx="85" cy="140" rx="20" ry="28" fill="#E8B5D8" opacity="0.95" transform="rotate(-30 85 140)"/>
+                    <ellipse cx="115" cy="140" rx="20" ry="28" fill="#D8A5C8" opacity="0.95" transform="rotate(30 115 140)"/>
+                    <ellipse cx="100" cy="125" rx="15" ry="22" fill="#D8A5C8" opacity="1"/>
+                    <circle cx="100" cy="115" r="8" fill="#B885A8"/>
+                    <path d="M 60 110 L 63 113 L 60 116 L 57 113 Z" fill="#B0E5FF" opacity="0.9" stroke="#87CEEB" stroke-width="0.8"/>
+                    <path d="M 140 115 L 143 118 L 140 121 L 137 118 Z" fill="#B0E5FF" opacity="0.9" stroke="#87CEEB" stroke-width="0.8"/>
+                </svg>`;
+        } else {
+            // Normal rose
+            svgContent = `
+                <svg viewBox="0 0 200 300" class="ice-cream-svg-small">
+                    <path d="M 70 180 L 100 280 L 130 180 Z" fill="#D2691E" stroke="#8B4513" stroke-width="2"/>
+                    <ellipse cx="85" cy="140" rx="20" ry="28" fill="#FF69B4" opacity="0.9" transform="rotate(-30 85 140)"/>
+                    <ellipse cx="115" cy="140" rx="20" ry="28" fill="#FF1493" opacity="0.9" transform="rotate(30 115 140)"/>
+                    <ellipse cx="90" cy="125" rx="15" ry="22" fill="#FF1493" opacity="0.95" transform="rotate(-15 90 125)"/>
+                    <ellipse cx="110" cy="125" rx="15" ry="22" fill="#FF69B4" opacity="0.95" transform="rotate(15 110 125)"/>
+                    <ellipse cx="100" cy="115" rx="12" ry="18" fill="#D4567F" opacity="1"/>
+                    <circle cx="100" cy="110" r="8" fill="#C71585"/>
+                </svg>`;
+        }
+
         const forecastItem = document.createElement('div');
         forecastItem.className = 'forecast-item';
         forecastItem.innerHTML = `
@@ -217,15 +263,7 @@ function displayForecast(forecast) {
                 <div class="forecast-desc">${day.weather[0].description}</div>
             </div>
             <div class="forecast-icon">
-                <svg viewBox="0 0 200 300" class="ice-cream-svg-small">
-                    <path d="M 70 180 L 100 280 L 130 180 Z" fill="#D2691E" stroke="#8B4513" stroke-width="2"/>
-                    <ellipse cx="85" cy="140" rx="25" ry="35" fill="#FF69B4" opacity="0.9" transform="rotate(-30 85 140)"/>
-                    <ellipse cx="115" cy="140" rx="25" ry="35" fill="#FF1493" opacity="0.9" transform="rotate(30 115 140)"/>
-                    <ellipse cx="90" cy="125" rx="20" ry="30" fill="#FF1493" opacity="0.95" transform="rotate(-15 90 125)"/>
-                    <ellipse cx="110" cy="125" rx="20" ry="30" fill="#FF69B4" opacity="0.95" transform="rotate(15 110 125)"/>
-                    <ellipse cx="100" cy="115" rx="15" ry="25" fill="#D4567F" opacity="1"/>
-                    <circle cx="100" cy="110" r="10" fill="#C71585"/>
-                </svg>
+                ${svgContent}
             </div>
             <div class="forecast-temp">${temp}°C</div>
         `;
