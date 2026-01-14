@@ -14,25 +14,33 @@ Une application météo élégante inspirée des célèbres glaces en forme de r
 
 ## 🍦 Système de Glaces Roses
 
-L'application affiche une glace en spirale (🍦) qui change d'animation selon la température, inspirée des célèbres roses Amorino :
+L'application affiche 3 types de glaces différentes selon la température, inspirées des célèbres roses Amorino :
 
-### 🍦 Rose qui Fond (> 20°C)
-- Température chaude
-- Animation : penche et fond doucement
-- Message : "Attention, ta rose fond !"
-- Effet lumineux (plus clair)
+### 🌺 Glace qui Fond (> 20°C)
+- **Forme** : Boule fermée et ronde (pas ouverte)
+- **Aspect** : 3 couches d'ellipses superposées pour créer une boule
+- **Effet** : Petites gouttes qui coulent en bas
+- **Couleurs** : Rose vif et chaud (#FF69B4, #FF1493)
+- **Animation** : Penche et fond doucement
+- **Message** : "Attention, ta rose fond !"
 
-### 🍦 Rose Parfaite (10-20°C)
-- Température idéale (10-20°C)
-- Animation : flottement élégant et doux
-- Message : "Parfait pour déguster ta rose"
-- La signature Amorino
+### 🌹 Rose Parfaite (10-20°C)
+- **Forme** : Belle rose ouverte en pétales
+- **Aspect** : 3 couches de pétales en spirale (externe, moyenne, interne)
+- **Centre** : Rose foncé élégant
+- **Couleurs** : Dégradé de roses (#FF69B4, #FF1493, #D4567F, #C71585)
+- **Animation** : Flottement élégant et doux
+- **Message** : "Parfait pour déguster ta rose"
+- ✨ **La signature Amorino !**
 
-### 🍦 Rose Gelée (< 10°C)
-- Température froide
-- Animation : tremble et grelotte
-- Message : "Ta rose est toute gelée"
-- Effet givré (plus brillant)
+### ❄️ Rose Gelée (< 10°C)
+- **Forme** : Rose en pétales givrés
+- **Aspect** : Rose plus pâle avec effet givré
+- **Cristaux** : 4 cristaux de glace bleu clair autour de la rose
+- **Givre** : Petites particules de givre flottantes
+- **Couleurs** : Rose pâle givré (#E8B5D8, #D8A5C8, #B885A8) + bleu glacé (#B0E5FF)
+- **Animation** : Tremble et grelotte de froid
+- **Message** : "Ta rose est toute gelée"
 
 ## 🚀 Installation
 
