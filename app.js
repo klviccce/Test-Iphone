@@ -12,11 +12,11 @@ const error = document.getElementById('error');
 const currentWeather = document.getElementById('currentWeather');
 const forecastContainer = document.getElementById('forecastContainer');
 
-// Ice cream icons based on temperature - Amorino flower style
+// Ice cream icons based on temperature - Amorino rose style
 const iceCreamIcons = {
-    melting: '🌺',  // > 20°C - Tropical flower melting
-    normal: '🌹',   // 10-20°C - Perfect rose ice cream
-    frozen: '🥀'    // < 10°C - Frozen wilted flower
+    melting: '🍦',  // > 20°C - Melting soft serve rose
+    normal: '🍦',   // 10-20°C - Perfect rose ice cream
+    frozen: '🍦'    // < 10°C - Frozen rose
 };
 
 // Helper function to get ice cream state based on temperature
@@ -24,19 +24,19 @@ function getIceCreamState(temp) {
     if (temp > 20) {
         return {
             icon: iceCreamIcons.melting,
-            status: 'Ta glace fond avec la chaleur',
+            status: 'Attention, ta rose fond !',
             cssClass: 'melting'
         };
     } else if (temp < 10) {
         return {
             icon: iceCreamIcons.frozen,
-            status: 'Ta glace est toute gelée',
+            status: 'Ta rose est toute gelée',
             cssClass: 'frozen'
         };
     } else {
         return {
             icon: iceCreamIcons.normal,
-            status: 'Parfait pour déguster',
+            status: 'Parfait pour déguster ta rose',
             cssClass: 'normal'
         };
     }

@@ -171,44 +171,67 @@ body {
     color: #4A4A4A;
 }
 
-/* Ice Cream Icon - Flower Rose Style */
+/* Ice Cream Icon - Amorino Rose Style */
 .weather-icon {
-    font-size: 90px;
-    margin: 15px 0;
+    font-size: 110px;
+    margin: 20px 0;
     position: relative;
     transition: all 0.5s ease;
     line-height: 1;
+    display: inline-block;
 }
 
-/* Melting effect - simple drip */
+/* Melting effect - dripping and tilting */
 .weather-icon.melting {
-    animation: melt 2.5s ease-in-out infinite;
+    animation: meltDrip 2s ease-in-out infinite;
+    filter: contrast(0.9) brightness(1.1);
 }
 
-@keyframes melt {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(4px); }
+@keyframes meltDrip {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(3px) rotate(-2deg);
+    }
+    75% {
+        transform: translateY(3px) rotate(2deg);
+    }
 }
 
-/* Frozen effect - gentle shake */
+/* Frozen effect - shivering and icy */
 .weather-icon.frozen {
-    animation: shiver 0.6s ease-in-out infinite;
+    animation: frostShiver 0.5s ease-in-out infinite;
+    filter: brightness(1.2) contrast(1.1);
 }
 
-@keyframes shiver {
-    0%, 100% { transform: translateX(0) rotate(0deg); }
-    25% { transform: translateX(-1px) rotate(-0.5deg); }
-    75% { transform: translateX(1px) rotate(0.5deg); }
+@keyframes frostShiver {
+    0%, 100% {
+        transform: translateX(0) rotate(0deg) scale(1);
+    }
+    25% {
+        transform: translateX(-2px) rotate(-1deg) scale(0.99);
+    }
+    50% {
+        transform: translateX(2px) rotate(0deg) scale(1.01);
+    }
+    75% {
+        transform: translateX(-2px) rotate(1deg) scale(0.99);
+    }
 }
 
-/* Normal state - subtle float */
+/* Normal state - elegant float like a perfect rose */
 .weather-icon.normal {
-    animation: float 3s ease-in-out infinite;
+    animation: roseFloat 3s ease-in-out infinite;
 }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
+@keyframes roseFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-8px) rotate(2deg);
+    }
 }
 
 .temperature {
@@ -358,7 +381,7 @@ body {
     }
 
     .weather-icon {
-        font-size: 75px;
+        font-size: 95px;
     }
 
     .current-weather {
