@@ -1,16 +1,35 @@
-# 🌤️ Application Météo pour iPhone
+# 🍦 Météo Gelato - Application Météo Amorino pour iPhone
 
-Une application météo moderne et élégante, optimisée pour iPhone. Progressive Web App (PWA) installable sur votre écran d'accueil.
+Une application météo gourmande avec un thème inspiré des glaces en fleurs d'Amorino ! Regardez votre glace fondre quand il fait chaud ou geler quand il fait froid. Progressive Web App (PWA) installable sur votre écran d'accueil.
 
 ## ✨ Fonctionnalités
 
 - 📍 **Géolocalisation automatique** - Détecte votre position actuelle
 - 🔍 **Recherche de ville** - Trouvez la météo n'importe où dans le monde
 - 🌡️ **Météo actuelle** - Température, ressenti, vent, humidité
-- 📅 **Prévisions 5 jours** - Anticipez la météo à venir
+- 📅 **Prévisions 5 jours** - Anticipez la météo à venir avec icônes de glace
 - 💾 **Mémorisation** - Se souvient de votre dernière ville recherchée
 - 📱 **Installable** - Ajoutez l'app à votre écran d'accueil iPhone
-- 🎨 **Design moderne** - Interface élégante adaptée à iOS
+- 🎨 **Design Amorino** - Dégradés pastel style gelato italien
+
+### 🍨 Système de Glace Animée
+
+L'application affiche différentes glaces selon la température :
+
+- **🍦 Glace qui fond** (> 20°C)
+  - Animation de fonte réaliste
+  - Message : "🫠 Attention, ta glace fond !"
+  - Parfait pour l'été !
+
+- **🍨 Glace parfaite** (10-20°C)
+  - Rebond doux et élégant
+  - Message : "✨ Parfait pour déguster une glace !"
+  - Température idéale pour un gelato
+
+- **🧊 Glace gelée** (< 10°C)
+  - Animation de tremblement glacé
+  - Message : "❄️ Brr, ta glace est toute gelée !"
+  - Effet glaçons en hiver
 
 ## 🚀 Installation
 
@@ -109,12 +128,23 @@ Test-Iphone/
 - **PWA** - Progressive Web App
 - **Service Worker** - Cache et mode offline
 
-## 🎨 Personnalisation
+## 🎨 Thème Amorino
 
-### Changer les couleurs
-Dans `style.css`, modifiez le dégradé de fond :
+L'application utilise une palette de couleurs pastel inspirée des glaces italiennes :
+
+- **Rose bonbon** (#FFB5E8) - Douceur et gourmandise
+- **Rose pâle** (#FFC9DE, #FFB6C1) - Élégance et délicatesse
+- **Crème vanille** (#FFE5B4) - Chaleur et réconfort
+- **Menthe glacée** (#DFFFFD) - Fraîcheur
+- **Lavande** (#E0BBE4, #DDA0DD) - Raffinement
+
+Les cartes météo utilisent des effets de verre (backdrop-filter) pour un effet gelato translucide !
+
+### Personnalisation
+
+Pour modifier les couleurs du dégradé dans `style.css` :
 ```css
-background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+background: linear-gradient(135deg, #FFB5E8 0%, #FFC9DE 25%, #FFE5B4 50%, #DFFFFD 75%, #E0BBE4 100%);
 ```
 
 ### Changer la ville par défaut
