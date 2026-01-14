@@ -11,6 +11,7 @@ const loading = document.getElementById('loading');
 const error = document.getElementById('error');
 const currentWeather = document.getElementById('currentWeather');
 const forecastContainer = document.getElementById('forecastContainer');
+const suggestionsDropdown = document.getElementById('suggestionsDropdown');
 
 // Ice cream icons based on temperature - Amorino rose style
 const iceCreamIcons = {
@@ -42,12 +43,28 @@ function getIceCreamState(temp) {
     }
 }
 
+// Search history management
+let searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
+let suggestionTimeout;
+
 // Event Listeners
 searchBtn.addEventListener('click', handleSearch);
 cityInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') handleSearch();
+    if (e.key === 'Enter') {
+        handleSearch();
+        hideSuggestions();
+    }
 });
+cityInput.addEventListener('input', handleSearchInput);
+cityInput.addEventListener('focus', handleSearchFocus);
 locationBtn.addEventListener('click', handleGeolocation);
+
+// Close suggestions when clicking outside
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.search-container')) {
+        hideSuggestions();
+    }
+});
 
 // Initialize app
 init();
@@ -78,9 +95,119 @@ function init() {
 function handleSearch() {
     const city = cityInput.value.trim();
     if (city) {
+        addToSearchHistory(city);
         getWeatherByCity(city);
         cityInput.value = '';
+        hideSuggestions();
     }
+}
+
+function handleSearchInput() {
+    const query = cityInput.value.trim();
+
+    clearTimeout(suggestionTimeout);
+
+    if (query.length === 0) {
+        showHistory();
+    } else if (query.length >= 2) {
+        suggestionTimeout = setTimeout(() => {
+            showSuggestions(query);
+        }, 300);
+    } else {
+        hideSuggestions();
+    }
+}
+
+function handleSearchFocus() {
+    if (cityInput.value.trim().length === 0) {
+        showHistory();
+    }
+}
+
+function addToSearchHistory(city) {
+    // Remove if already exists
+    searchHistory = searchHistory.filter(item => item.toLowerCase() !== city.toLowerCase());
+
+    // Add to beginning
+    searchHistory.unshift(city);
+
+    // Keep only last 5
+    searchHistory = searchHistory.slice(0, 5);
+
+    // Save to localStorage
+    localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
+}
+
+function showHistory() {
+    if (searchHistory.length === 0) {
+        hideSuggestions();
+        return;
+    }
+
+    suggestionsDropdown.innerHTML = '<div class="suggestion-label">Historique</div>';
+
+    searchHistory.forEach(city => {
+        const item = document.createElement('div');
+        item.className = 'suggestion-item history';
+        item.innerHTML = `
+            <span class="suggestion-icon">🕐</span>
+            <span class="suggestion-text">${city}</span>
+        `;
+        item.addEventListener('click', () => {
+            cityInput.value = city;
+            handleSearch();
+        });
+        suggestionsDropdown.appendChild(item);
+    });
+
+    suggestionsDropdown.classList.add('show');
+}
+
+function showSuggestions(query) {
+    // Popular French cities
+    const cities = [
+        'Paris', 'Lyon', 'Marseille', 'Toulouse', 'Nice', 'Nantes',
+        'Strasbourg', 'Montpellier', 'Bordeaux', 'Lille', 'Rennes',
+        'Reims', 'Le Havre', 'Saint-Étienne', 'Toulon', 'Grenoble',
+        'Dijon', 'Angers', 'Nîmes', 'Villeurbanne', 'Le Mans',
+        'Aix-en-Provence', 'Clermont-Ferrand', 'Brest', 'Tours',
+        'Amiens', 'Limoges', 'Annecy', 'Perpignan', 'Boulogne-Billancourt',
+        'Londres', 'New York', 'Tokyo', 'Berlin', 'Madrid', 'Rome',
+        'Barcelone', 'Amsterdam', 'Bruxelles', 'Genève', 'Zurich',
+        'Lisbonne', 'Dublin', 'Vienne', 'Prague', 'Copenhague',
+        'Stockholm', 'Oslo', 'Helsinki', 'Varsovie', 'Budapest'
+    ];
+
+    const matches = cities.filter(city =>
+        city.toLowerCase().startsWith(query.toLowerCase())
+    ).slice(0, 8);
+
+    if (matches.length === 0) {
+        hideSuggestions();
+        return;
+    }
+
+    suggestionsDropdown.innerHTML = '<div class="suggestion-label">Suggestions</div>';
+
+    matches.forEach(city => {
+        const item = document.createElement('div');
+        item.className = 'suggestion-item';
+        item.innerHTML = `
+            <span class="suggestion-icon">📍</span>
+            <span class="suggestion-text">${city}</span>
+        `;
+        item.addEventListener('click', () => {
+            cityInput.value = city;
+            handleSearch();
+        });
+        suggestionsDropdown.appendChild(item);
+    });
+
+    suggestionsDropdown.classList.add('show');
+}
+
+function hideSuggestions() {
+    suggestionsDropdown.classList.remove('show');
 }
 
 function handleGeolocation() {
